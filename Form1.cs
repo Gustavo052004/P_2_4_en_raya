@@ -95,115 +95,17 @@ namespace P_2_4_en_raya
 
 		private void Mostrar_En_Tablero(byte columna)
 		{
-			string posicion;
+			string[] letrasColumnas = { "A", "B", "C", "D", "E", "F", "G" };
+			string posicion = FilaDesocupada(columna) + "," + columna;
 
-			switch(columna)
+			if (FilaDesocupada(columna) != -1)
 			{
-				case 0:
-					if(FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna,posicion);
-						
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-					
-					break;
-
-				case 1:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
-				case 2:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
-				case 3:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
-				case 4:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
-				case 5:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
-				case 6:
-
-					if (FilaDesocupada(columna) != -1)
-					{
-						posicion = FilaDesocupada(columna) + "," + columna;
-						tablero[FilaDesocupada(columna), columna] = turnos.Peek();
-						AnimacionCaidaFichas(columna, posicion);
-					}
-					else
-					{
-						AlertaLleno(" ");
-					}
-
-					break;
-
+				tablero[FilaDesocupada(columna), columna] = turnos.Peek();
+				AnimacionCaidaFichas(columna, posicion);
+			}
+			else
+			{
+				AlertaLleno(letrasColumnas[columna]);
 			}
 		}
 
@@ -211,6 +113,11 @@ namespace P_2_4_en_raya
 		private void AlertaLleno(string columna)
 		{
 			MessageBox.Show("Columna " + columna + " Llena", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			string nombreBoton = "BTN_COLUM_" + columna; //se concatena el nombre con numnero para obtener el nombre conmpleto del boton
+			Guna2Button boton = (Guna2Button)this.Controls.Find(nombreBoton, true)[0];  //se busca el boton y se guarda en una variable guna
+
+			boton.Enabled = false;
 		}
 
 
@@ -297,10 +204,12 @@ namespace P_2_4_en_raya
 
 		private void AgregarTurnos() //agregar todos los turnos de la partida
 		{
+
 			byte jugador_inicial = 1;
 			if (turnos.Count == 0) //valida si la cola tiene elementos
 			{
-				for (int i = 0; i < 42; i++)  //son 42 truenos 
+				
+				for (int i = 0; i < 43; i++)  //son 42 truenos + 1 para evitar error por falta de errores
 				{
 					turnos.Enqueue(jugador_inicial);
 

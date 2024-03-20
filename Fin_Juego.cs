@@ -87,7 +87,8 @@ namespace P_2_4_en_raya
 					Imagen_Ganador.Image = Properties.Resources.T_WIN;
 				}
 				
-
+				Reanudar reanudar = new Reanudar();
+				reanudar.Borrar_Archivos();
 				
 			}
 			else

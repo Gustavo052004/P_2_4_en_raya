@@ -16,7 +16,7 @@ namespace P_2_4_en_raya
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+			Application.Run(new Menu_Inicio());
 		}
 	}
 }

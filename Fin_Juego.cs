@@ -87,8 +87,7 @@ namespace P_2_4_en_raya
 					Imagen_Ganador.Image = Properties.Resources.T_WIN;
 				}
 				
-				Reanudar reanudar = new Reanudar();
-				reanudar.Borrar_Archivos();
+				
 				
 			}
 			else
@@ -97,6 +96,10 @@ namespace P_2_4_en_raya
 				Panel_Empate.Size = new Size(351, 150);
 				
 			}
+
+			Reanudar reanudar = new Reanudar();
+			reanudar.Borrar_Archivos();
+
 		}
 
 		private async void SonidoWinyMusica(byte w_e)

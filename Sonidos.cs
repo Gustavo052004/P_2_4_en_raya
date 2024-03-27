@@ -224,7 +224,9 @@ namespace P_2_4_en_raya
 					break;
 
 				case 2:
+					// ejecuta una tarea en segundo plano.
 					Task.Run(() => MusicaFondoJuego(cancellationTokenSource.Token));
+					//lambda que define el código que se ejecutará en la tarea.
 					break;
 
 				case 3:

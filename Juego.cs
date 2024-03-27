@@ -138,8 +138,8 @@ namespace P_2_4_en_raya
 
 				if(Validar_Gane((byte)fila, columna))
 				{
-
 					Mostrar_Fin_Juego(1, tablero[fila, columna]);
+					
 				}
 				//else
 				//{
@@ -154,17 +154,17 @@ namespace P_2_4_en_raya
 		private async Task Mostrar_Fin_Juego(byte win_empaty,byte player)
 		{
 			
-			presionado = true;
+			presionado = true; //No permitir que el boton de pausa funcione mas.
 
-			if (win_empaty == 1)
+			if (win_empaty == 1) // si es 1 es gane 2  empate
 			{
 				await Task.Delay(1000);
 			}
-			Fin_Juego fin_Juego = new Fin_Juego(win_empaty,player,musica);
+			Fin_Juego fin_Juego = new Fin_Juego(win_empaty,player,musica,this);
 
-			fin_Juego.TopLevel = false;
+			fin_Juego.TopLevel = false; // eliminamos el nuvel de superior de la ventana
 
-			Panel_p_y_f.Controls.Add(fin_Juego);
+			Panel_p_y_f.Controls.Add(fin_Juego); // agregamos el formulario a un panel 
 
 			musica.DetenerMusicaFondos();
 
@@ -176,7 +176,7 @@ namespace P_2_4_en_raya
 			Panel_p_y_f.BorderRadius = 15;
 			Panel_p_y_f.Size = new Size(fin_Juego.Size.Width, fin_Juego.Size.Height);
 
-			fin_Juego.FormClosed += Fin_Juego_FormClosed;
+			fin_Juego.FormClosed += Fin_Juego_FormClosed; // Heredamos el evento FORMCLOSED de cierre del formularo y utilizamos el evento
 		}
 
 		private void Fin_Juego_FormClosed(object sender, FormClosedEventArgs e)
@@ -503,7 +503,7 @@ namespace P_2_4_en_raya
 				fichas.Add(boton); //se agrega a al lista
 			}
 		}
-		private void Desactivarbotones()
+		public void Desactivarbotones()
 		{
 			BTN_COLUM_A.Enabled = false;
 			BTN_COLUM_B.Enabled = false;
@@ -537,6 +537,7 @@ namespace P_2_4_en_raya
 
 		private void BTN_PAUSA_Click(object sender, EventArgs e)
 		{
+			Desactivarbotones();
 			musica.EfectoClickPausaBtn();
 			if(!presionado)
 			{
@@ -581,6 +582,7 @@ namespace P_2_4_en_raya
 
                this.Close();
             }
+			Activarbotones();
 
 		}
 	}

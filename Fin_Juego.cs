@@ -14,11 +14,15 @@ namespace P_2_4_en_raya
 	public partial class Fin_Juego : Form
 	{
 		private Sonidos musica;
+		private Juego Juego;
 		//	private byte win_emp 1 gano 2 empate
-		public Fin_Juego(byte win_emp, byte player, Sonidos sonidos)
+		public Fin_Juego(byte win_emp, byte player, Sonidos sonidos, Juego juego)
 		{
 			InitializeComponent();
 
+			this.Juego = juego;
+
+			juego.Desactivarbotones();
 			this.musica = sonidos;
 			Mostrar_Panel(win_emp, player);
 			AnimacionLogos(win_emp);

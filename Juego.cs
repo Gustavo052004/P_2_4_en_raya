@@ -575,14 +575,15 @@ namespace P_2_4_en_raya
 		{
 			presionado = false;
 			Panel_p_y_f.Size = new Size(0,0);
-			
-			if(e_s == "SS")
+			Activarbotones();
+
+			if (e_s == "SS")
 			{
 				menu_inicio.Show();
 
                this.Close();
             }
-			Activarbotones();
+			
 
 		}
 	}

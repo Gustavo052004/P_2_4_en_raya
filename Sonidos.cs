@@ -19,7 +19,7 @@ namespace P_2_4_en_raya
 		private bool continuarReproduccionFondo = true;
 		private bool continuarReproduccionEfectos = true;
 
-		private CancellationTokenSource cancellationTokenSource;
+		private CancellationTokenSource cancellationTokenSource; //CancellationTokenSource es una clase que se utiliza para generar tokens de cancelación y cancelar tareas en ejecución.
 
 
 		public async Task MusicaFondoInicio(CancellationToken cancellationToken)
